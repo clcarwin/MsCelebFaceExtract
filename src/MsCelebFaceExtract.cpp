@@ -107,10 +107,13 @@ int ReadLine(string line, const string save_root_path, string *img_path) {
     return 0;
 }
 
-int main() {
-    const string tsv_path = "../../MsCelebV1-Faces-Aligned.tsv";
-    const string save_path = "/home/xiang.wu/data/MsCelebV1_Faces_Aligned/MsCelebV1-Faces-Aligned/";
-    const string log_path = "/home/xiang.wu/data/MsCelebV1_Faces_Aligned/log.txt";
+int main(int argc, char** argv) {
+    printf("usage:\n\textract [tsv_file_path]");
 
+    string tsv_path = "MsCelebV1-Faces-Aligned.tsv";
+    string save_path = "./MsCelebV1-Faces-Aligned/";
+    string log_path = "./log.txt";
+
+    if(argc==2) tsv_path = argv[1];
     int ret = ReadTSV(tsv_path, save_path, log_path);
 }
